@@ -1,7 +1,8 @@
-"use strict";
+import { Task, Domain } from './types'
 
-var domain; // The domain module is executed on demand
-var hasSetImmediate = typeof setImmediate === "function";
+let domain: Domain; // The domain module is executed on demand
+const hasSetImmediate = typeof setImmediate === "function";
+
 
 // Use the fastest means possible to execute a task in its own turn, with
 // priority over other events including network IO events in Node.js.
@@ -12,8 +13,7 @@ var hasSetImmediate = typeof setImmediate === "function";
 // soon as possible, but if you use `rawAsap` directly, you are responsible to
 // either ensure that no exceptions are thrown from your task, or to manually
 // call `rawAsap.requestFlush` if an exception is thrown.
-module.exports = rawAsap;
-function rawAsap(task) {
+export function rawAsap(task: Task): void {
     if (!queue.length) {
         requestFlush();
         flushing = true;
@@ -22,18 +22,22 @@ function rawAsap(task) {
     queue[queue.length] = task;
 }
 
-var queue = [];
+
+const queue: Task[] = [];
+
 // Once a flush has been requested, no further calls to `requestFlush` are
 // necessary until the next `flush` completes.
-var flushing = false;
+let flushing = false;
+
 // The position of the next task to execute in the task queue. This is
 // preserved between calls to `flush` so that it can be resumed if
 // a task throws an exception.
-var index = 0;
+let index = 0;
+
 // If a task schedules additional tasks recursively, the task queue can grow
 // unbounded. To prevent memory excaustion, the task queue will periodically
 // truncate already-completed tasks.
-var capacity = 1024;
+let capacity = 1024;
 
 // The flush function processes all tasks that have been scheduled with
 // `rawAsap` unless and until one of those tasks throws an exception.
@@ -80,7 +84,7 @@ function requestFlush() {
             // Only employed if the user elects to use domains.
             domain = require("domain");
         }
-        domain.active = process.domain = null;
+        domain.active = process.domain = null as any;
     }
 
     // `setImmediate` is slower that `process.nextTick`, but `process.nextTick`
