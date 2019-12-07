@@ -13,6 +13,7 @@
     "url": "https://github.com/kriskowal/asap.git"
   },
   "main": "dist/cjs/node/index.js",
+  "module": "dist/esm/browser/index.js",
   "types": "lib/node/index.d.ts",
   "react-native": {
     "domain": false
