@@ -1,5 +1,5 @@
-import { asap } from '../src/index';
-import { rawAsap } from '../src/raw';
+import { asap } from '../src/node';
+import { rawAsap } from '../src/node/raw';
 import { domain } from './domain';
 
 const MAX_RECURSION = 10;

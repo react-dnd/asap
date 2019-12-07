@@ -1,4 +1,3 @@
 // In Node.js, use the native domain module
 // package.json redirects ./domain to ./browser-domain for browsers.
-const domain = require('domain');
-export { domain };
+export const domain = require('domain');

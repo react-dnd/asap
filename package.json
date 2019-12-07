@@ -18,11 +18,16 @@
   "react-native": {
     "domain": false
   },
+  "browser": {
+    "./asap": "./lib/browser/asap.js",
+    "./asap.js": "./lib/browser/asap.js",
+    "./raw": "./lib/browser/raw.js",
+    "./raw.js": "./lib/browser/raw.js"
+  },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint"
+    "build:ts": "tsc -b",
+    "lint": "tsdx lint",
+    "test": "tsdx test"
   },
   "peerDependencies": {},
   "husky": {

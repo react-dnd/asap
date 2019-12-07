@@ -1,4 +1,4 @@
-import { Task, Domain } from './types';
+import { Task, Domain } from '../types';
 
 let domain: Domain; // The domain module is executed on demand
 const hasSetImmediate = typeof setImmediate === 'function';
