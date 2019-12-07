@@ -12,20 +12,19 @@
     "type": "git",
     "url": "https://github.com/kriskowal/asap.git"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "module": "dist/asap.esm.js",
+  "main": "dist/cjs/node/index.js",
+  "types": "lib/node/index.d.ts",
   "react-native": {
     "domain": false
   },
   "browser": {
-    "./asap": "./lib/browser/asap.js",
-    "./asap.js": "./lib/browser/asap.js",
-    "./raw": "./lib/browser/raw.js",
-    "./raw.js": "./lib/browser/raw.js"
+    "./asap": "./dist/esm/browser/asap.js",
+    "./asap.js": "./dist/esm/browser/asap.js",
+    "./raw": "./dist/esm/browser/raw.js",
+    "./raw.js": "./dist/esm/browser/raw.js"
   },
   "scripts": {
-    "build:ts": "tsc -b",
+    "build": "./scripts/build.sh",
     "lint": "tsdx lint",
     "test": "tsdx test"
   },
@@ -43,6 +42,10 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
+    "@babel/core": "^7.7.5",
+    "@babel/cli": "^7.7.5",
+    "@babel/preset-env": "^7.7.5",
+    "babel-preset-env": "^1.7.0",
     "husky": "^3.1.0",
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
